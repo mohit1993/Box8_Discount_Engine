@@ -141,20 +141,20 @@ const handleBOGO = (cart, coupon, response) => {
         return a.value < b.value;
     });
 
-    let discountAmount = 0;
     let i = 0;
     while (itemCount > 0 ) {
         if(itemCount - cart[i].quantity >= 0) {
-            discountAmount += cart[i].quantity * cart[i].unit_cost;
+            discount += cart[i].quantity * cart[i].unit_cost;
             itemCount -= cart[i].quantity;
         } else {
-            discountAmount += itemCount*cart[i].unit_cost;
+            discount += itemCount*cart[i].unit_cost;
             itemCount = 0;
         }
         i += 1;
     }
+    if (discount > coupon.maximum_discount) discount = coupon.maximum_discount;
     
-    if (totalAmount - discountAmount < coupon.minimum_delivery_amount_after_discount) {
+    if (totalAmount - discount < coupon.minimum_delivery_amount_after_discount) {
         response.message = COUPON_CODE_MINIMUM_CART_VALUE_UNSATISFIED + coupon.minimum_delivery_amount_after_discount;
         return response;
     }
