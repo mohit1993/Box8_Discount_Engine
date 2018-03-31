@@ -1,3 +1,5 @@
+const availableCoupons = [];
+
 const COUPON_CODE_INVALID = "Invalid coupon code";
 const COUPON_CODE_NOT_VALID_ON_OUTLET = "Coupon code is not valid on this current outlet";
 const COUPON_CODE_EXPIRED = "Coupon code expired";
