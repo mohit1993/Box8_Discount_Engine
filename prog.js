@@ -138,7 +138,7 @@ const handleBOGO = (cart, coupon, response) => {
     itemCount = itemCount/2;
 
     cart.sort((a, b) => {
-        return a.value < b.value;
+        return a.value > b.value;
     });
 
     let i = 0;
